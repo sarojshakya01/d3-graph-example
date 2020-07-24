@@ -713,11 +713,11 @@ function drawChart(graphParams, index) {
       strVar += '              <p class="type">' + result.type + "</p>";
       strVar += "            </div>";
       strVar += '            <div class="buttons">';
-      if (result.type == "machine") {
+      if (result.type != "machine") {
         strVar +=
           "              <a target='_blank' href='/machine/" +
           result.id +
-          "'><button class='btn btn-search-box btn-action'>View</button></a>";
+          "'><button class='btn btn-search-box btn-action btn-view-machine'>View</button></a>";
       }
 
       strVar +=
@@ -769,7 +769,8 @@ function drawChart(graphParams, index) {
     d3.selectAll(".user-search-box")
       .transition()
       .duration(250)
-      .style("width", "350px");
+      .style("width", "350px")
+      .style("display", "block");
   }
 
   function closeSearchBox() {
@@ -777,6 +778,7 @@ function drawChart(graphParams, index) {
       .transition()
       .duration(250)
       .style("width", "0px")
+      .style("display", "none")
       .each("end", function () {
         graphParams.funcs.clearResult();
         clear(".search-input");

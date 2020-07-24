@@ -125,7 +125,7 @@
   position: relative;
   background-color: white;
   width: 100%;
-  height: 100px;
+  height: 50px;
   border-top: 1px solid #d3e8e5;
 }
 
@@ -136,27 +136,29 @@
 
 .user-search-box .list-item .image-wrapper {
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
 }
 
 .user-search-box .list-item .image {
-  width: 70px;
-  height: 70px;
-  margin-left: 15px;
-  margin-top: 15px;
+  width: 35px;
+  height: 35px;
+  margin-left: 2px;
+  margin-top: 2px;
   border-radius: 5px;
 }
 
 .user-search-box .list-item .description {
-  padding: 15px;
+  padding: 2px;
   padding-left: 0px;
   float: left;
   width: 170px;
+  margin-top: 2px;
 }
 
 .user-search-box .list-item .buttons {
-  padding: 15px;
+  padding: 2px;
   padding-left: 0px;
   float: left;
   width: auto;
@@ -180,7 +182,13 @@
   padding: 0;
 }
 .user-search-box .list-item .btn-locate {
-  margin-top: 30px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.user-search-box .list-item .btn-view-machine {
+  margin-top: 10px;
+  margin-left: 50px;
   padding: 5px;
 }
 
