@@ -10,7 +10,7 @@ After install Node.js, intall following modules using `npm`.
 
 Initialize the API service using
 
-### `node api.js`
+### `node server/api.js`
 
 If any module is not found, install that module using
 

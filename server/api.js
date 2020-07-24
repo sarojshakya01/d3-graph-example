@@ -6,7 +6,7 @@ const fs = require("fs");
 app.use(cors());
 
 app.get("/getdata", (request, response) => {
-  fs.readFile("data.json", "utf8", function (err, contents) {
+  fs.readFile("./server/data.json", "utf8", function (err, contents) {
     response.send(contents);
   });
 });
