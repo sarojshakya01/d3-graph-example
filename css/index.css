@@ -225,7 +225,7 @@
   top: 115px;
   z-index: 10;
   text-align: left;
-  width: 200px;
+  width: 170px;
 }
 
 .tooltip-hr {
@@ -312,24 +312,24 @@
 .tags {
   list-style: none;
   margin-top: -9px;
-  margin-left: 5px;
   overflow: hidden;
   padding: 0;
 }
 
 .tags-wrapper {
   font-size: 2.28rem;
-  line-height: 110%;
-  margin: 1.14rem 0 0.912rem 0;
+  margin-top: 10px;
 }
 
 .tags-wrapper .title {
   color: #91a4a5;
-  font-size: 24px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .tags li {
   float: left;
+  margin-top: -20px;
 }
 
 .tag {
@@ -450,6 +450,19 @@
 .btn-back {
   top: 140px;
 }
+
+.btn-cluster-view {
+  position: absolute;
+  right: 5px;
+  padding: 2px;
+  background: #ccc;
+  color: #555;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  line-height: 0;
+}
+
 /* .btn-action:focus {
   outline: 0;
   background-color: #aa1414;
@@ -522,7 +535,7 @@ text {
 
 .node-group .item-name {
   fill: #962828;
-  font-size: 12px;
+  font-size: 9px;
   font-weight: 600;
 }
 

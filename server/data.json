@@ -827,6 +827,31 @@
               "children": null
             }
           ]
+        },
+        {
+          "id": "app32-stage1",
+          "type": "application",
+          "name": "amazon",
+          "is_unknown": null,
+          "additional_data": {
+            "app_id": "app32-stage1",
+            "entity_id": "703043",
+            "current_machine": "VM1.stage1",
+            "has_access": true,
+            "os": "WINDOWS",
+            "node_type": "Physical",
+            "ip_address": "10.180.4.116",
+            "processes": [
+              "chrome.exe",
+              "sqlwriter.exe",
+              "MQExplorer.exe",
+              "sqlservr.exe"
+            ],
+            "machines": ["VM1.stage1", "VM1.stage2"],
+            "complexity_score": 1.348
+          },
+          "value": "app32-stage1",
+          "children": null
         }
       ],
       "is_root": true
@@ -1166,6 +1191,519 @@
                 "complexity_score": 1.348
               },
               "value": "app5-prod",
+              "children": null
+            }
+          ]
+        }
+      ],
+      "is_root": true
+    },
+    {
+      "id": "app0-prod2",
+      "type": "appstack",
+      "name": "CC Analyzer Prod2",
+      "is_unknown": null,
+      "additional_data": {
+        "app_id": "app0-prod2",
+        "entity_id": "703043",
+        "current_machine": "VM1.prod",
+        "has_access": true,
+        "os": "WINDOWS",
+        "node_type": "Physical",
+        "ip_address": "10.180.4.116",
+        "processes": [
+          "chrome.exe",
+          "sqlwriter.exe",
+          "MQExplorer.exe",
+          "sqlservr.exe"
+        ],
+        "applications": [
+          "Ruby on Rails",
+          "Apache2",
+          "MySQL Server",
+          "Postgres Server",
+          "SNMP Service"
+        ],
+        "machines": ["VM1.prod", "VM2.prod", "VM3.prod"],
+        "complexity_score": 1.348
+      },
+      "value": "app0-prod2",
+      "children": [
+        {
+          "id": "app1-prod",
+          "type": "application",
+          "name": "Ruby On Rails",
+          "is_unknown": null,
+          "additional_data": {
+            "app_id": "app1-prod2",
+            "entity_id": "703043",
+            "current_machine": "VM1.prod2",
+            "has_access": true,
+            "os": "WINDOWS",
+            "node_type": "Physical",
+            "ip_address": "10.180.4.116",
+            "processes": [
+              "chrome.exe",
+              "sqlwriter.exe",
+              "MQExplorer.exe",
+              "sqlservr.exe"
+            ],
+            "machines": ["VM1.local", "VM1.stage1", "VM1.stage2", "VM1.prod"],
+            "complexity_score": 1.348
+          },
+          "value": "app1-prod2",
+          "children": [
+            {
+              "id": "app3-prod2",
+              "type": "application",
+              "name": "MySQL Server",
+              "is_unknown": null,
+              "additional_data": {
+                "app_id": "app3-prod2",
+                "entity_id": "703043",
+                "current_machine": "VM2.prod",
+                "has_access": true,
+                "os": "WINDOWS",
+                "node_type": "Physical",
+                "ip_address": "10.180.4.116",
+                "processes": [
+                  "chrome.exe",
+                  "sqlwriter.exe",
+                  "MQExplorer.exe",
+                  "sqlservr.exe"
+                ],
+                "machines": [
+                  "VM2.local",
+                  "VM2.stage1",
+                  "VM2.stage2",
+                  "VM2.prod"
+                ],
+                "complexity_score": 1.348
+              },
+              "value": "app3-prod2",
+              "children": null
+            },
+            {
+              "id": "app4-prod2",
+              "type": "application",
+              "name": "PostgresSQL Server",
+              "is_unknown": null,
+              "additional_data": {
+                "app_id": "app4-prod2",
+                "entity_id": "703043",
+                "current_machine": "VM2.prod2",
+                "has_access": true,
+                "os": "WINDOWS",
+                "node_type": "Physical",
+                "ip_address": "10.180.4.116",
+                "processes": [
+                  "chrome.exe",
+                  "sqlwriter.exe",
+                  "MQExplorer.exe",
+                  "sqlservr.exe"
+                ],
+                "machines": ["VM2.local", "VM2.prod"],
+                "complexity_score": 1.348
+              },
+              "value": "app4-prod2",
+              "children": null
+            }
+          ]
+        },
+        {
+          "id": "app2-prod2",
+          "type": "application",
+          "name": "Apache2",
+          "is_unknown": null,
+          "additional_data": {
+            "app_id": "app2-prod2",
+            "entity_id": "703043",
+            "current_machine": "VM1.prod2",
+            "has_access": true,
+            "os": "WINDOWS",
+            "node_type": "Physical",
+            "ip_address": "10.180.4.116",
+            "processes": [
+              "chrome.exe",
+              "sqlwriter.exe",
+              "MQExplorer.exe",
+              "sqlservr.exe"
+            ],
+            "machines": ["VM1.local", "VM1.prod2"],
+            "complexity_score": 1.348
+          },
+          "value": "app2-prod",
+          "children": [
+            {
+              "id": "app5-prod2",
+              "type": "application",
+              "name": "SNMP Service",
+              "is_unknown": null,
+              "additional_data": {
+                "app_id": "app5-prod2",
+                "entity_id": "703043",
+                "current_machine": "VM3.prod2",
+                "has_access": true,
+                "os": "WINDOWS",
+                "node_type": "Physical",
+                "ip_address": "10.180.4.116",
+                "processes": [
+                  "chrome.exe",
+                  "sqlwriter.exe",
+                  "MQExplorer.exe",
+                  "sqlservr.exe"
+                ],
+                "machines": [
+                  "VM3.local",
+                  "VM3.stage1",
+                  "VM3.stage2",
+                  "VM3.prod"
+                ],
+                "complexity_score": 1.348
+              },
+              "value": "app5-prod2",
+              "children": null
+            }
+          ]
+        }
+      ],
+      "is_root": true
+    },
+    {
+      "id": "app0-prod3",
+      "type": "appstack",
+      "name": "CC Analyzer Prod3",
+      "is_unknown": null,
+      "additional_data": {
+        "app_id": "app0-prod3",
+        "entity_id": "703043",
+        "current_machine": "VM1.prod",
+        "has_access": true,
+        "os": "WINDOWS",
+        "node_type": "Physical",
+        "ip_address": "10.180.4.116",
+        "processes": [
+          "chrome.exe",
+          "sqlwriter.exe",
+          "MQExplorer.exe",
+          "sqlservr.exe"
+        ],
+        "applications": [
+          "Ruby on Rails",
+          "Apache2",
+          "MySQL Server",
+          "Postgres Server",
+          "SNMP Service"
+        ],
+        "machines": ["VM1.prod", "VM2.prod", "VM3.prod"],
+        "complexity_score": 1.348
+      },
+      "value": "app0-prod3",
+      "children": [
+        {
+          "id": "app1-prod",
+          "type": "application",
+          "name": "Ruby On Rails",
+          "is_unknown": null,
+          "additional_data": {
+            "app_id": "app1-prod3",
+            "entity_id": "703043",
+            "current_machine": "VM1.prod3",
+            "has_access": true,
+            "os": "WINDOWS",
+            "node_type": "Physical",
+            "ip_address": "10.180.4.116",
+            "processes": [
+              "chrome.exe",
+              "sqlwriter.exe",
+              "MQExplorer.exe",
+              "sqlservr.exe"
+            ],
+            "machines": ["VM1.local", "VM1.stage1", "VM1.stage2", "VM1.prod"],
+            "complexity_score": 1.348
+          },
+          "value": "app1-prod3",
+          "children": [
+            {
+              "id": "app3-prod3",
+              "type": "application",
+              "name": "MySQL Server",
+              "is_unknown": null,
+              "additional_data": {
+                "app_id": "app3-prod3",
+                "entity_id": "703043",
+                "current_machine": "VM2.prod",
+                "has_access": true,
+                "os": "WINDOWS",
+                "node_type": "Physical",
+                "ip_address": "10.180.4.116",
+                "processes": [
+                  "chrome.exe",
+                  "sqlwriter.exe",
+                  "MQExplorer.exe",
+                  "sqlservr.exe"
+                ],
+                "machines": [
+                  "VM2.local",
+                  "VM2.stage1",
+                  "VM2.stage2",
+                  "VM2.prod"
+                ],
+                "complexity_score": 1.348
+              },
+              "value": "app3-prod3",
+              "children": null
+            },
+            {
+              "id": "app4-prod3",
+              "type": "application",
+              "name": "PostgresSQL Server",
+              "is_unknown": null,
+              "additional_data": {
+                "app_id": "app4-prod3",
+                "entity_id": "703043",
+                "current_machine": "VM2.prod3",
+                "has_access": true,
+                "os": "WINDOWS",
+                "node_type": "Physical",
+                "ip_address": "10.180.4.116",
+                "processes": [
+                  "chrome.exe",
+                  "sqlwriter.exe",
+                  "MQExplorer.exe",
+                  "sqlservr.exe"
+                ],
+                "machines": ["VM2.local", "VM2.prod"],
+                "complexity_score": 1.348
+              },
+              "value": "app4-prod3",
+              "children": null
+            }
+          ]
+        },
+        {
+          "id": "app2-prod3",
+          "type": "application",
+          "name": "Apache2",
+          "is_unknown": null,
+          "additional_data": {
+            "app_id": "app2-prod3",
+            "entity_id": "703043",
+            "current_machine": "VM1.prod3",
+            "has_access": true,
+            "os": "WINDOWS",
+            "node_type": "Physical",
+            "ip_address": "10.180.4.116",
+            "processes": [
+              "chrome.exe",
+              "sqlwriter.exe",
+              "MQExplorer.exe",
+              "sqlservr.exe"
+            ],
+            "machines": ["VM1.local", "VM1.prod3"],
+            "complexity_score": 1.348
+          },
+          "value": "app2-prod",
+          "children": [
+            {
+              "id": "app5-prod3",
+              "type": "application",
+              "name": "SNMP Service",
+              "is_unknown": null,
+              "additional_data": {
+                "app_id": "app5-prod3",
+                "entity_id": "703043",
+                "current_machine": "VM3.prod3",
+                "has_access": true,
+                "os": "WINDOWS",
+                "node_type": "Physical",
+                "ip_address": "10.180.4.116",
+                "processes": [
+                  "chrome.exe",
+                  "sqlwriter.exe",
+                  "MQExplorer.exe",
+                  "sqlservr.exe"
+                ],
+                "machines": [
+                  "VM3.local",
+                  "VM3.stage1",
+                  "VM3.stage2",
+                  "VM3.prod"
+                ],
+                "complexity_score": 1.348
+              },
+              "value": "app5-prod3",
+              "children": null
+            }
+          ]
+        }
+      ],
+      "is_root": true
+    },
+    {
+      "id": "app0-prod4",
+      "type": "appstack",
+      "name": "CC Analyzer Prod4",
+      "is_unknown": null,
+      "additional_data": {
+        "app_id": "app0-prod4",
+        "entity_id": "703043",
+        "current_machine": "VM1.prod",
+        "has_access": true,
+        "os": "WINDOWS",
+        "node_type": "Physical",
+        "ip_address": "10.180.4.116",
+        "processes": [
+          "chrome.exe",
+          "sqlwriter.exe",
+          "MQExplorer.exe",
+          "sqlservr.exe"
+        ],
+        "applications": [
+          "Ruby on Rails",
+          "Apache2",
+          "MySQL Server",
+          "Postgres Server",
+          "SNMP Service"
+        ],
+        "machines": ["VM1.prod", "VM2.prod", "VM3.prod"],
+        "complexity_score": 1.348
+      },
+      "value": "app0-prod4",
+      "children": [
+        {
+          "id": "app1-prod",
+          "type": "application",
+          "name": "Ruby On Rails",
+          "is_unknown": null,
+          "additional_data": {
+            "app_id": "app1-prod4",
+            "entity_id": "703043",
+            "current_machine": "VM1.prod4",
+            "has_access": true,
+            "os": "WINDOWS",
+            "node_type": "Physical",
+            "ip_address": "10.180.4.116",
+            "processes": [
+              "chrome.exe",
+              "sqlwriter.exe",
+              "MQExplorer.exe",
+              "sqlservr.exe"
+            ],
+            "machines": ["VM1.local", "VM1.stage1", "VM1.stage2", "VM1.prod"],
+            "complexity_score": 1.348
+          },
+          "value": "app1-prod4",
+          "children": [
+            {
+              "id": "app3-prod4",
+              "type": "application",
+              "name": "MySQL Server",
+              "is_unknown": null,
+              "additional_data": {
+                "app_id": "app3-prod4",
+                "entity_id": "703043",
+                "current_machine": "VM2.prod",
+                "has_access": true,
+                "os": "WINDOWS",
+                "node_type": "Physical",
+                "ip_address": "10.180.4.116",
+                "processes": [
+                  "chrome.exe",
+                  "sqlwriter.exe",
+                  "MQExplorer.exe",
+                  "sqlservr.exe"
+                ],
+                "machines": [
+                  "VM2.local",
+                  "VM2.stage1",
+                  "VM2.stage2",
+                  "VM2.prod"
+                ],
+                "complexity_score": 1.348
+              },
+              "value": "app3-prod4",
+              "children": null
+            },
+            {
+              "id": "app4-prod4",
+              "type": "application",
+              "name": "PostgresSQL Server",
+              "is_unknown": null,
+              "additional_data": {
+                "app_id": "app4-prod4",
+                "entity_id": "703043",
+                "current_machine": "VM2.prod4",
+                "has_access": true,
+                "os": "WINDOWS",
+                "node_type": "Physical",
+                "ip_address": "10.180.4.116",
+                "processes": [
+                  "chrome.exe",
+                  "sqlwriter.exe",
+                  "MQExplorer.exe",
+                  "sqlservr.exe"
+                ],
+                "machines": ["VM2.local", "VM2.prod"],
+                "complexity_score": 1.348
+              },
+              "value": "app4-prod4",
+              "children": null
+            }
+          ]
+        },
+        {
+          "id": "app2-prod4",
+          "type": "application",
+          "name": "Apache2",
+          "is_unknown": null,
+          "additional_data": {
+            "app_id": "app2-prod4",
+            "entity_id": "703043",
+            "current_machine": "VM1.prod4",
+            "has_access": true,
+            "os": "WINDOWS",
+            "node_type": "Physical",
+            "ip_address": "10.180.4.116",
+            "processes": [
+              "chrome.exe",
+              "sqlwriter.exe",
+              "MQExplorer.exe",
+              "sqlservr.exe"
+            ],
+            "machines": ["VM1.local", "VM1.prod4"],
+            "complexity_score": 1.348
+          },
+          "value": "app2-prod",
+          "children": [
+            {
+              "id": "app5-prod4",
+              "type": "application",
+              "name": "SNMP Service",
+              "is_unknown": null,
+              "additional_data": {
+                "app_id": "app5-prod4",
+                "entity_id": "703043",
+                "current_machine": "VM3.prod4",
+                "has_access": true,
+                "os": "WINDOWS",
+                "node_type": "Physical",
+                "ip_address": "10.180.4.116",
+                "processes": [
+                  "chrome.exe",
+                  "sqlwriter.exe",
+                  "MQExplorer.exe",
+                  "sqlservr.exe"
+                ],
+                "machines": [
+                  "VM3.local",
+                  "VM3.stage1",
+                  "VM3.stage2",
+                  "VM3.prod"
+                ],
+                "complexity_score": 1.348
+              },
+              "value": "app5-prod4",
               "children": null
             }
           ]

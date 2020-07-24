@@ -2,16 +2,13 @@ var clusterArray = [];
 var activeCluster;
 var isExpand = false;
 const apiURL = "http://localhost:9000/getdata";
-// const apiURL =
-//   "https://raw.githubusercontent.com/bumbeishvili/Assets/master/Projects/D3/Organization%20Chart/redesignedChartLongData.json";
 
-var params = {
+var graphParams = {
   selector: "#svgChart",
   chartWidth: window.innerWidth - 40,
-  chartHeight: 500,
-  //   containerWidth: "33%",
-  //   containerHeight: "33%",
+  chartHeight: 700,
   funcs: {
+    setClusterActive: null,
     showCurrentItem: null,
     search: null,
     closeSearchBox: null,
@@ -25,66 +22,83 @@ var params = {
   },
   data: null,
   active: true,
-  nodeWidth: 80,
-  nodeHeight: 80,
+  nodeWidth: 50,
+  nodeHeight: 50,
 };
 
 d3.json(apiURL, function (data) {
-  data.graph.forEach(function (cluster, index) {
-    var newParams = JSON.parse(JSON.stringify(params));
-
-    newParams.data = cluster;
-    newParams.pristinaData = JSON.parse(JSON.stringify(cluster));
-    if (index > 0) {
-      newParams.chartWidth = (window.innerWidth - 40) / 3 - 5;
-      newParams.chartHeight = newParams.chartWidth;
-      newParams.selector = "#svgSubChart";
-      newParams.active = false;
-      newParams.nodeHeight = 54;
-      newParams.nodeWidth = 54;
-    }
-    clusterArray.push(newParams);
+  data.graph.forEach(function (data, index) {
+    populateCluster(index, 0, data);
   });
-  clusterArray.forEach(function (params) {
-    drawChart(params);
-  });
+  drawAllChart();
+  // shiftText();
 });
 
-function drawChart(params) {
+function drawAllChart() {
+  clusterArray.forEach(function (cluster, index) {
+    drawChart(cluster, index);
+  });
+}
+
+function populateCluster(index, activeIndex, data) {
+  var newGraphParams = JSON.parse(JSON.stringify(graphParams));
+
+  newGraphParams.data = data;
+  newGraphParams.pristinaData = newGraphParams;
+  if (index != activeIndex) {
+    newGraphParams.chartWidth = (window.innerWidth - 40) / 6 - 6;
+    newGraphParams.chartHeight = newGraphParams.chartWidth;
+    newGraphParams.selector = "#svgSubChart";
+    newGraphParams.active = false;
+    newGraphParams.nodeHeight = 30;
+    newGraphParams.nodeWidth = 30;
+  } else {
+    newGraphParams.chartWidth = window.innerWidth - 40;
+    newGraphParams.chartHeight = newGraphParams.chartHeight;
+    newGraphParams.selector = "#svgChart";
+    newGraphParams.active = true;
+    newGraphParams.nodeHeight = 50;
+    newGraphParams.nodeWidth = 50;
+  }
+  clusterArray.push(newGraphParams);
+}
+
+function drawChart(graphParams, index) {
   listen();
 
-  params.funcs.expandAll = expandAll;
-  params.funcs.search = searchUsers;
-  params.funcs.toggleFullScreen = toggleFullScreen;
-  params.funcs.closeSearchBox = closeSearchBox;
-  params.funcs.findInTree = findInTree;
-  params.funcs.clearResult = clearResult;
-  params.funcs.reflectResults = reflectResults;
-  params.funcs.closeToolTip = closeToolTip;
-  // params.funcs.shoyCurrentItem = showCurrentItem;
-  // params.funcs.back = back;
-  params.funcs.locate = locate;
+  graphParams.funcs.expandAll = expandAll;
+  graphParams.funcs.setClusterActive = setClusterActive;
+  graphParams.funcs.search = searchItems;
+  graphParams.funcs.toggleFullScreen = toggleFullScreen;
+  graphParams.funcs.closeSearchBox = closeSearchBox;
+  graphParams.funcs.findInTree = findInTree;
+  graphParams.funcs.clearResult = clearResult;
+  graphParams.funcs.reflectResults = reflectResults;
+  graphParams.funcs.closeToolTip = closeToolTip;
+  // graphParams.funcs.showCurrentItem = showCurrentItem;
+  // graphParams.funcs.back = back;
+  graphParams.funcs.locate = locate;
 
-  if (params.active) {
-    activeCluster = params;
+  if (graphParams.active) {
+    activeCluster = graphParams;
   }
 
   var attrs = {
     EXPAND_SYMBOL: "\uf067",
     COLLAPSE_SYMBOL: "\uf068",
-    selector: params.selector,
-    root: params.data,
-    width: params.chartWidth,
-    height: params.chartHeight,
+    selector: graphParams.selector,
+    root: graphParams.data,
+    width: graphParams.chartWidth,
+    height: graphParams.chartHeight,
     index: 0,
-    nodePadding: params.active ? 9 : 6,
+    nodePadding: graphParams.active ? 5 : 3,
     collapseCircleRadius: 7,
-    nodeHeight: params.nodeHeight,
-    nodeWidth: params.nodeWidth,
+    nodeHeight: graphParams.nodeHeight,
+    nodeWidth: graphParams.nodeWidth,
     duration: 750,
-    rootNodeTopMargin: 20,
+    rootNodeTopMargin: graphParams.active ? 20 : 12,
     minMaxZoomProportions: [0.05, 3],
-    linkLineSize: 180,
+    linkLineSize: 100,
     collapsibleFontSize: "10px",
     userIcon: "\uf007",
     nodeStroke: "#ccc",
@@ -92,7 +106,9 @@ function drawChart(params) {
   };
 
   var dynamic = {};
-  dynamic.nodeImageWidth = (attrs.nodeHeight * 100) / 140;
+  dynamic.nodeImageWidth = graphParams.active
+    ? (attrs.nodeHeight * 100) / 140
+    : (attrs.nodeHeight * 100) / 140;
   dynamic.nodeImageHeight = attrs.nodeHeight - 2 * attrs.nodePadding;
   dynamic.nodeTextLeftMargin = 0; //attrs.nodePadding * 2 + dynamic.nodeImageWidth;
 
@@ -112,32 +128,44 @@ function drawChart(params) {
   var zoomBehaviours = d3.behavior
     .zoom()
     .scaleExtent(attrs.minMaxZoomProportions)
-    .on("zoom", redraw);
+    .on("zoom", function () {
+      return graphParams.active ? redraw() : null;
+    });
 
   var svg = d3
     .select(attrs.selector)
     .append("div")
     .attr("class", function () {
-      if (params.active) return "cluster active card";
+      if (graphParams.active) return "cluster active card";
       else return "cluster card";
     })
+    .attr("id", "cluster" + (index + 1))
     .append("svg")
     .attr("width", attrs.width)
     .attr("height", attrs.height)
     .call(zoomBehaviours)
     .append("g")
+
     .attr("transform", function () {
-      if (params.active) {
-        return (
-          "translate(" + (attrs.width - attrs.nodeWidth) / 2 + "," + 50 + ")"
-        );
-      } else {
-        return (
-          "translate(" + (attrs.width - attrs.nodeWidth) / 2 + "," + 50 + ")"
-        );
-      }
+      return (
+        "translate(" +
+        (attrs.width - attrs.nodeWidth) / 2 +
+        "," +
+        (attrs.nodeHeight + 5) +
+        ")"
+      );
     });
 
+  if (!graphParams.active) {
+    var viewicon = d3
+      .select(attrs.selector + " #cluster" + (index + 1))
+      .append("button")
+      .attr("class", "btn btn-cluster-view")
+      .attr("onclick", "activeCluster.funcs.setClusterActive(" + index + ")")
+      .append("i")
+      .attr("class", "fa fa-eye")
+      .attr("aria-hidden", "true");
+  }
   //necessary so that zoom knows where to zoom and unzoom from
   zoomBehaviours.translate([
     dynamic.rootNodeLeftMargin,
@@ -147,19 +175,17 @@ function drawChart(params) {
   attrs.root.x0 = 0;
   attrs.root.y0 = dynamic.rootNodeLeftMargin;
 
-  if (params.mode != "department") {
-    // adding unique values to each node recursively
-    var uniq = 1;
-    addPropertyRecursive(
-      "uniqueIdentifier",
-      function (v) {
-        return uniq++;
-      },
-      attrs.root
-    );
-  }
+  // adding unique values to each node recursively
+  var uniq = 1;
+  addPropertyRecursive(
+    "uniqueIdentifier",
+    function (v) {
+      return uniq++;
+    },
+    attrs.root
+  );
 
-  //   expand(attrs.root);
+  // expand(attrs.root);
   if (attrs.root.children) {
     attrs.root.children.forEach(collapse);
   }
@@ -227,46 +253,64 @@ function drawChart(params) {
         return v.uniqueIdentifier;
       });
 
-    var collapsibleRects = collapsiblesWrapper
-      .append("rect")
-      .attr("class", "node-collapse-right-rect")
-      .attr("height", attrs.collapseCircleRadius)
-      .attr("fill", "black")
-      .attr("x", attrs.nodeWidth - attrs.collapseCircleRadius)
-      .attr("y", attrs.nodeHeight - 7)
-      .attr("width", function (d) {
-        if (d.children || d._children) return attrs.collapseCircleRadius;
-        return 0;
-      });
-
-    var collapsibles = collapsiblesWrapper
-      .append("circle")
-      .attr("class", "node-collapse")
-      .attr("cx", attrs.nodeWidth - attrs.collapseCircleRadius)
-      .attr("cy", attrs.nodeHeight - 7)
-      .attr("", setCollapsibleSymbolProperty);
-
     //hide collapse rect when node does not have children
-    collapsibles
-      .attr("r", function (d) {
-        if (d.children || d._children) return attrs.collapseCircleRadius;
-        return 0;
-      })
-      .attr("height", attrs.collapseCircleRadius);
+    if (graphParams.active) {
+      var collapsibles = collapsiblesWrapper
+        .append("circle")
+        .attr("class", "node-collapse")
+        .attr("cx", attrs.nodeWidth - attrs.collapseCircleRadius)
+        .attr("cy", attrs.nodeHeight - 7)
+        .attr("", setCollapsibleSymbolProperty);
 
-    collapsiblesWrapper
-      .append("text")
-      .attr("class", "text-collapse")
-      .attr("x", attrs.nodeWidth - attrs.collapseCircleRadius)
-      .attr("y", attrs.nodeHeight - 3)
-      .attr("width", attrs.collapseCircleRadius)
-      .attr("height", attrs.collapseCircleRadius)
-      .style("font-size", attrs.collapsibleFontSize)
-      .attr("text-anchor", "middle")
-      .style("font-family", "FontAwesome")
-      .text(function (d) {
-        return d.collapseText;
-      });
+      collapsiblesWrapper
+        .append("rect")
+        .attr("class", "node-collapse-right-rect")
+        .attr("height", attrs.collapseCircleRadius)
+        .attr("fill", "black")
+        .attr("x", attrs.nodeWidth - attrs.collapseCircleRadius)
+        .attr("y", attrs.nodeHeight - 7)
+        .attr("width", function (d) {
+          if (d.children || d._children) return attrs.collapseCircleRadius;
+          return 0;
+        });
+      collapsibles
+        .attr("r", function (d) {
+          if (d.children || d._children) return attrs.collapseCircleRadius;
+          return 0;
+        })
+        .attr("height", attrs.collapseCircleRadius);
+
+      nodeGroup
+        .append("text")
+        .attr("x", dynamic.nodeTextLeftMargin + 4)
+        .attr("y", function () {
+          return graphParams.active
+            ? dynamic.nodeChildCountTopMargin - 2
+            : dynamic.nodeChildCountTopMargin;
+        })
+        .attr("class", "children-count")
+        .attr("text-anchor", "left")
+
+        .text(function (d) {
+          if (d.children) return d.children.length;
+          if (d._children) return d._children.length;
+          return;
+        });
+
+      collapsiblesWrapper
+        .append("text")
+        .attr("class", "text-collapse")
+        .attr("x", attrs.nodeWidth - attrs.collapseCircleRadius)
+        .attr("y", attrs.nodeHeight - 3)
+        .attr("width", attrs.collapseCircleRadius)
+        .attr("height", attrs.collapseCircleRadius)
+        .style("font-size", attrs.collapsibleFontSize)
+        .attr("text-anchor", "middle")
+        .style("font-family", "FontAwesome")
+        .text(function (d) {
+          return d.collapseText;
+        });
+    }
 
     collapsiblesWrapper.on("click", click);
 
@@ -274,7 +318,6 @@ function drawChart(params) {
       .append("text")
       .attr("x", dynamic.nodeTextLeftMargin)
       .attr("y", -5)
-      //   .attr("y", attrs.nodePadding + 10)
       .attr("class", "item-name")
       .attr("text-anchor", "left")
       .text(function (d) {
@@ -283,30 +326,13 @@ function drawChart(params) {
     //   .call(wrap, attrs.nodeWidth);
 
     nodeGroup
-      .append("text")
-      .attr("x", dynamic.nodeTextLeftMargin + 5)
-      .attr("y", function () {
-        return params.active
-          ? dynamic.nodeChildCountTopMargin + 4
-          : dynamic.nodeChildCountTopMargin;
-      })
-      .attr("class", "children-count")
-      .attr("text-anchor", "left")
-
-      .text(function (d) {
-        if (d.children) return d.children.length;
-        if (d._children) return d._children.length;
-        return;
-      });
-
-    nodeGroup
       .append("defs")
       .append("svg:clipPath")
       .attr("id", "clip")
       .append("svg:rect")
       .attr("id", "clip-rect")
       .attr("rx", 3)
-      .attr("x", attrs.nodePadding)
+      .attr("x", attrs.nodePadding + 2)
       .attr("y", attrs.nodePadding)
       .attr("width", dynamic.nodeImageWidth)
       .attr("fill", "none")
@@ -499,7 +525,6 @@ function drawChart(params) {
           "</a>";
       }
       strVar += '      <p class="title type">' + item.name + "</p>";
-      strVar += '      <p class="type"></p>';
       strVar +=
         '      <h4 class="tags-wrapper"><span class="title">Machine List';
       strVar +=
@@ -602,6 +627,7 @@ function drawChart(params) {
   }
 
   // #############################   Function Area #######################
+
   function wrap(text, width) {
     text.each(function () {
       var text = d3.select(this),
@@ -656,7 +682,7 @@ function drawChart(params) {
     }
   }
 
-  function getEmployeesCount(node) {
+  function getItemsCount(node) {
     var count = 1;
     countChilds(node);
     return count;
@@ -704,7 +730,7 @@ function drawChart(params) {
     });
 
     var htmlString = htmlStringArray.join("");
-    params.funcs.clearResult();
+    graphParams.funcs.clearResult();
 
     var parentElement = get(".result-list");
     var old = parentElement.innerHTML;
@@ -727,16 +753,19 @@ function drawChart(params) {
       input.addEventListener("input", function () {
         var value = input.value ? input.value.trim() : "";
         if (value.length < 3) {
-          params.funcs.clearResult();
+          graphParams.funcs.clearResult();
         } else {
-          var searchResult = params.funcs.findInTree(params.data, value);
-          params.funcs.reflectResults(searchResult);
+          var searchResult = graphParams.funcs.findInTree(
+            graphParams.data,
+            value
+          );
+          graphParams.funcs.reflectResults(searchResult);
         }
       });
     }
   }
 
-  function searchUsers() {
+  function searchItems() {
     d3.selectAll(".user-search-box")
       .transition()
       .duration(250)
@@ -749,7 +778,7 @@ function drawChart(params) {
       .duration(250)
       .style("width", "0px")
       .each("end", function () {
-        params.funcs.clearResult();
+        graphParams.funcs.clearResult();
         clear(".search-input");
       });
   }
@@ -761,6 +790,7 @@ function drawChart(params) {
       .style("opacity", "0")
       .style("display", "none");
   }
+
   function findInTree(rootElement, searchText) {
     var result = [];
     // use regex to achieve case insensitive search and avoid string creation using toLowerCase method
@@ -790,13 +820,39 @@ function drawChart(params) {
   //     ".customTooltip-wrapper",
   //     ".btn-action.btn-back",,
   //   ]);
-  //   clear(params.selector);
+  //   clear(graphParams.selector);
 
-  //   params.mode = "full";
-  //   params.data = deepClone(params.pristinaData);
-  //   drawChart(params);
+  //   graphParams.mode = "full";
+  //   graphParams.data = deepClone(graphParams.pristinaData);
+  //   drawChart(graphParams);
   // }
 
+  function setClusterActive(activeIndex) {
+    clusterArray.forEach(function (cluster, index) {
+      if (index != activeIndex) {
+        cluster.chartWidth = (window.innerWidth - 40) / 6 - 6;
+        cluster.chartHeight = cluster.chartWidth;
+        cluster.selector = "#svgSubChart";
+        cluster.active = false;
+        cluster.nodeHeight = 30;
+        cluster.nodeWidth = 30;
+      } else {
+        cluster.chartWidth = window.innerWidth - 40;
+        cluster.chartHeight = 700;
+        cluster.selector = "#svgChart";
+        cluster.active = true;
+        cluster.nodeHeight = 50;
+        cluster.nodeWidth = 50;
+      }
+    });
+
+    d3.select("#svgChart").html("");
+    d3.select("#svgSubChart").html("");
+
+    clusterArray.forEach(function (graphParams, index) {
+      drawChart(graphParams, index);
+    });
+  }
   function expandAll() {
     if (!isExpand) {
       expand(activeCluster.data);
@@ -930,9 +986,9 @@ function drawChart(params) {
       } else if (document.webkitCancelFullScreen) {
         document.webkitCancelFullScreen();
       }
-      d3.select(params.selector + " svg")
-        .attr("width", params.chartWidth)
-        .attr("height", params.chartHeight);
+      d3.select(graphParams.selector + " svg")
+        .attr("width", graphParams.chartWidth)
+        .attr("height", graphParams.chartHeight);
     }
   }
 
@@ -1085,3 +1141,19 @@ function getIcon(type, iconType) {
     else return svgIcons[type + "-expand"];
   }
 }
+
+// function shiftText() {
+//   var nameText = d3.selectAll(".item-name");
+//   // .node();
+//   var textWidth = nameText.getBoundingClientRect().width;
+//   var rects = nameText.parentElement.getElementsByTagName("rect");
+//   var parentWidth = 0;
+//   for (var i = 0; i < rects.length; i++) {
+//     tempWidth = rects[i].getBoundingClientRect().width;
+//     if (tempWidth > parentWidth) parentWidth = tempWidth;
+//   }
+//   if (parentWidth < textWidth) {
+//     var x = (textWidth - width) / 2;
+//     this.attr("x", x);
+//   }
+// }
