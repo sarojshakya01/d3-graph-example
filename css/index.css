@@ -8,7 +8,7 @@
 /* ############################## SEARCHBOX ######################################### */
 
 .user-search-box {
-  height: 500px;
+  height: 700px;
   overflow: hidden;
   position: absolute;
   right: 0;
@@ -57,7 +57,7 @@
 }
 
 .user-search-box .result-box {
-  height: 380px;
+  height: 580px;
 }
 
 .tooltip.close-button-wrapper {
@@ -108,7 +108,7 @@
 
 .user-search-box .result-list {
   position: absolute;
-  max-height: 335px;
+  max-height: 535px;
   min-width: 100%;
   overflow: auto;
   overflow-y: scroll;
