@@ -415,38 +415,38 @@
                       "children": null
                     }
                   ]
+                },
+                {
+                  "id": "app13-dev",
+                  "type": "application",
+                  "name": "Tomcat",
+                  "is_unknown": null,
+                  "additional_data": {
+                    "app_id": "app13-dev",
+                    "entity_id": "703044",
+                    "current_machine": "VM2.local",
+                    "has_access": true,
+                    "os": "WINDOWS",
+                    "node_type": "Physical",
+                    "ip_address": "10.180.4.116",
+                    "processes": [
+                      "chrome.exe",
+                      "sqlwriter.exe",
+                      "MQExplorer.exe",
+                      "sqlservr.exe"
+                    ],
+                    "machines": [
+                      "VM2.local",
+                      "VM2.stage1",
+                      "VM2.stage2",
+                      "VM2.prod"
+                    ],
+                    "complexity_score": 1.348
+                  },
+                  "value": "app13-dev",
+                  "children": null
                 }
               ]
-            },
-            {
-              "id": "app13-dev",
-              "type": "application",
-              "name": "Tomcat",
-              "is_unknown": null,
-              "additional_data": {
-                "app_id": "app13-dev",
-                "entity_id": "703044",
-                "current_machine": "VM2.local",
-                "has_access": true,
-                "os": "WINDOWS",
-                "node_type": "Physical",
-                "ip_address": "10.180.4.116",
-                "processes": [
-                  "chrome.exe",
-                  "sqlwriter.exe",
-                  "MQExplorer.exe",
-                  "sqlservr.exe"
-                ],
-                "machines": [
-                  "VM2.local",
-                  "VM2.stage1",
-                  "VM2.stage2",
-                  "VM2.prod"
-                ],
-                "complexity_score": 1.348
-              },
-              "value": "app13-dev",
-              "children": null
             },
             {
               "id": "app14-dev",
@@ -476,7 +476,38 @@
                 "complexity_score": 1.348
               },
               "value": "app14-dev",
-              "children": null
+              "children": [
+                {
+                  "id": "app13-dev",
+                  "type": "application",
+                  "name": "Tomcat",
+                  "is_unknown": null,
+                  "additional_data": {
+                    "app_id": "app13-dev",
+                    "entity_id": "703044",
+                    "current_machine": "VM2.local",
+                    "has_access": true,
+                    "os": "WINDOWS",
+                    "node_type": "Physical",
+                    "ip_address": "10.180.4.116",
+                    "processes": [
+                      "chrome.exe",
+                      "sqlwriter.exe",
+                      "MQExplorer.exe",
+                      "sqlservr.exe"
+                    ],
+                    "machines": [
+                      "VM2.local",
+                      "VM2.stage1",
+                      "VM2.stage2",
+                      "VM2.prod"
+                    ],
+                    "complexity_score": 1.348
+                  },
+                  "value": "app13-dev",
+                  "children": null
+                }
+              ]
             },
             {
               "id": "app15-dev",
@@ -1707,6 +1738,90 @@
               "children": null
             }
           ]
+        }
+      ],
+      "is_root": true
+    },
+    {
+      "id": "app0-prod5",
+      "type": "appstack",
+      "name": "CC Analyzer Prod5",
+      "is_unknown": null,
+      "additional_data": {
+        "app_id": "app0-prod5",
+        "entity_id": "703043",
+        "current_machine": "VM1.prod",
+        "has_access": true,
+        "os": "WINDOWS",
+        "node_type": "Physical",
+        "ip_address": "10.180.4.116",
+        "processes": [
+          "chrome.exe",
+          "sqlwriter.exe",
+          "MQExplorer.exe",
+          "sqlservr.exe"
+        ],
+        "applications": [
+          "Ruby on Rails",
+          "Apache2",
+          "MySQL Server",
+          "Postgres Server",
+          "SNMP Service"
+        ],
+        "machines": ["VM1.prod", "VM2.prod", "VM3.prod"],
+        "complexity_score": 1.348
+      },
+      "value": "app0-prod5",
+      "children": [
+        {
+          "id": "app1-prod",
+          "type": "application",
+          "name": "Ruby On Rails",
+          "is_unknown": null,
+          "additional_data": {
+            "app_id": "app1-prod4",
+            "entity_id": "703043",
+            "current_machine": "VM1.prod4",
+            "has_access": true,
+            "os": "WINDOWS",
+            "node_type": "Physical",
+            "ip_address": "10.180.4.116",
+            "processes": [
+              "chrome.exe",
+              "sqlwriter.exe",
+              "MQExplorer.exe",
+              "sqlservr.exe"
+            ],
+            "machines": ["VM1.local", "VM1.stage1", "VM1.stage2", "VM1.prod"],
+            "complexity_score": 1.348
+          },
+          "value": "app1-prod4",
+          "children": null
+        },
+        {
+          "id": "app2-prod4",
+          "type": "application",
+          "name": "Apache2",
+          "is_unknown": null,
+          "additional_data": {
+            "app_id": "app2-prod4",
+            "entity_id": "703043",
+            "current_machine": "VM1.prod4",
+            "has_access": true,
+            "os": "WINDOWS",
+            "node_type": "Physical",
+            "ip_address": "10.180.4.116",
+            "processes": [
+              "chrome.exe",
+              "sqlwriter.exe",
+              "MQExplorer.exe",
+              "sqlservr.exe"
+            ],
+            "machines": ["VM1.local", "VM1.prod4"],
+            "complexity_score": 1.348
+          },
+          "value": "app2-prod",
+          "children": null
         }
       ],
       "is_root": true
