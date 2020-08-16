@@ -546,11 +546,23 @@ function drawChart(cluster, clusterIndex) {
     nodeGroup
       .append("text")
       .attr("x", dynamic.nodeTextLeftMargin)
-      .attr("y", -5)
-      .attr("class", "item-name")
+      .attr("y", -15)
+      .attr("class", "item-name app")
       .attr("text-anchor", "left")
       .text(function (d) {
         return d.name.trim();
+      })
+      .call(shiftText, attrs.nodeWidth);
+    //   .call(wrap, attrs.nodeWidth);
+
+    nodeGroup
+      .append("text")
+      .attr("x", dynamic.nodeTextLeftMargin)
+      .attr("y", -5)
+      .attr("class", "item-name machine")
+      .attr("text-anchor", "left")
+      .text(function (d) {
+        return "(" + d.additional_data.current_machine.trim() + ")";
       })
       .call(shiftText, attrs.nodeWidth);
     //   .call(wrap, attrs.nodeWidth);
@@ -880,7 +892,8 @@ function drawChart(cluster, clusterIndex) {
         "</a>";
     }
     strVar += '      <p class="title type">' + item.name + "</p>";
-    strVar += '      <h4 class="tags-wrapper"><span class="title">Machine List';
+    strVar +=
+      '      <h4 class="tags-wrapper"><span class="title">Tagged Machine List';
     strVar +=
       '        </span>           <ul class="tags">' +
       getTagsFromCommaSeparatedStrings(

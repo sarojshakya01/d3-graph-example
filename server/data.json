@@ -3,7 +3,7 @@
     {
       "id": "app0-dev",
       "type": "appstack",
-      "name": "CC Analyzer Dev",
+      "name": "Dev App Stack",
       "is_unknown": null,
       "additional_data": {
         "app_id": "app0-dev",
@@ -33,7 +33,7 @@
         {
           "id": "app1-dev",
           "type": "application",
-          "name": "Ruby On Rails",
+          "name": "Redis Server",
           "is_unknown": null,
           "additional_data": {
             "app_id": "app1-dev",
@@ -140,162 +140,37 @@
                         "complexity_score": 1.348
                       },
                       "value": "app7-dev",
-                      "children": [
-                        {
-                          "id": "app8-dev",
-                          "type": "application",
-                          "name": "Couch Base",
-                          "is_unknown": null,
-                          "additional_data": {
-                            "app_id": "app8-dev",
-                            "entity_id": "703044",
-                            "current_machine": "VM2.local",
-                            "has_access": true,
-                            "os": "WINDOWS",
-                            "node_type": "Physical",
-                            "ip_address": "10.180.4.116",
-                            "processes": [
-                              "chrome.exe",
-                              "sqlwriter.exe",
-                              "MQExplorer.exe",
-                              "sqlservr.exe"
-                            ],
-                            "machines": [
-                              "VM2.local",
-                              "VM2.stage1",
-                              "VM2.stage2",
-                              "VM2.prod"
-                            ],
-                            "complexity_score": 1.348
-                          },
-                          "value": "app8-dev",
-                          "children": [
-                            {
-                              "id": "app9-dev",
-                              "type": "application",
-                              "name": "HTTP",
-                              "is_unknown": null,
-                              "additional_data": {
-                                "app_id": "app9-dev",
-                                "entity_id": "703044",
-                                "current_machine": "VM2.local",
-                                "has_access": true,
-                                "os": "WINDOWS",
-                                "node_type": "Physical",
-                                "ip_address": "10.180.4.116",
-                                "processes": [
-                                  "chrome.exe",
-                                  "sqlwriter.exe",
-                                  "MQExplorer.exe",
-                                  "sqlservr.exe"
-                                ],
-                                "machines": [
-                                  "VM2.local",
-                                  "VM2.stage1",
-                                  "VM2.stage2",
-                                  "VM2.prod"
-                                ],
-                                "complexity_score": 1.348
-                              },
-                              "value": "app9-dev",
-                              "children": [
-                                {
-                                  "id": "app10-dev",
-                                  "type": "application",
-                                  "name": "POSTFIX Server",
-                                  "is_unknown": null,
-                                  "additional_data": {
-                                    "app_id": "app10-dev",
-                                    "entity_id": "703044",
-                                    "current_machine": "VM2.local",
-                                    "has_access": true,
-                                    "os": "WINDOWS",
-                                    "node_type": "Physical",
-                                    "ip_address": "10.180.4.116",
-                                    "processes": [
-                                      "chrome.exe",
-                                      "sqlwriter.exe",
-                                      "MQExplorer.exe",
-                                      "sqlservr.exe"
-                                    ],
-                                    "machines": [
-                                      "VM2.local",
-                                      "VM2.stage1",
-                                      "VM2.stage2",
-                                      "VM2.prod"
-                                    ],
-                                    "complexity_score": 1.348
-                                  },
-                                  "value": "app10-dev",
-                                  "children": [
-                                    {
-                                      "id": "app11-dev",
-                                      "type": "application",
-                                      "name": "Spark Server",
-                                      "is_unknown": null,
-                                      "additional_data": {
-                                        "app_id": "app11-dev",
-                                        "entity_id": "703044",
-                                        "current_machine": "VM2.local",
-                                        "has_access": true,
-                                        "os": "WINDOWS",
-                                        "node_type": "Physical",
-                                        "ip_address": "10.180.4.116",
-                                        "processes": [
-                                          "chrome.exe",
-                                          "sqlwriter.exe",
-                                          "MQExplorer.exe",
-                                          "sqlservr.exe"
-                                        ],
-                                        "machines": [
-                                          "VM2.local",
-                                          "VM2.stage1",
-                                          "VM2.stage2",
-                                          "VM2.prod"
-                                        ],
-                                        "complexity_score": 1.348
-                                      },
-                                      "value": "app11-dev",
-                                      "children": [
-                                        {
-                                          "id": "app12-dev",
-                                          "type": "application",
-                                          "name": "Redis Server",
-                                          "is_unknown": null,
-                                          "additional_data": {
-                                            "app_id": "app12-dev",
-                                            "entity_id": "703044",
-                                            "current_machine": "VM2.local",
-                                            "has_access": true,
-                                            "os": "WINDOWS",
-                                            "node_type": "Physical",
-                                            "ip_address": "10.180.4.116",
-                                            "processes": [
-                                              "chrome.exe",
-                                              "sqlwriter.exe",
-                                              "MQExplorer.exe",
-                                              "sqlservr.exe"
-                                            ],
-                                            "machines": [
-                                              "VM2.local",
-                                              "VM2.stage1",
-                                              "VM2.stage2",
-                                              "VM2.prod"
-                                            ],
-                                            "complexity_score": 1.348
-                                          },
-                                          "value": "app12-dev",
-                                          "children": null
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
+                      "children": null
+                    },
+                    {
+                      "id": "app8-dev",
+                      "type": "application",
+                      "name": "Couch Base",
+                      "is_unknown": null,
+                      "additional_data": {
+                        "app_id": "app8-dev",
+                        "entity_id": "703044",
+                        "current_machine": "VM2.local",
+                        "has_access": true,
+                        "os": "WINDOWS",
+                        "node_type": "Physical",
+                        "ip_address": "10.180.4.116",
+                        "processes": [
+                          "chrome.exe",
+                          "sqlwriter.exe",
+                          "MQExplorer.exe",
+                          "sqlservr.exe"
+                        ],
+                        "machines": [
+                          "VM2.local",
+                          "VM2.stage1",
+                          "VM2.stage2",
+                          "VM2.prod"
+                        ],
+                        "complexity_score": 1.348
+                      },
+                      "value": "app8-dev",
+                      "children": null
                     }
                   ]
                 }
@@ -415,36 +290,6 @@
                       "children": null
                     }
                   ]
-                },
-                {
-                  "id": "app13-dev",
-                  "type": "application",
-                  "name": "Tomcat",
-                  "is_unknown": null,
-                  "additional_data": {
-                    "app_id": "app13-dev",
-                    "entity_id": "703044",
-                    "current_machine": "VM2.local",
-                    "has_access": true,
-                    "os": "WINDOWS",
-                    "node_type": "Physical",
-                    "ip_address": "10.180.4.116",
-                    "processes": [
-                      "chrome.exe",
-                      "sqlwriter.exe",
-                      "MQExplorer.exe",
-                      "sqlservr.exe"
-                    ],
-                    "machines": [
-                      "VM2.local",
-                      "VM2.stage1",
-                      "VM2.stage2",
-                      "VM2.prod"
-                    ],
-                    "complexity_score": 1.348
-                  },
-                  "value": "app13-dev",
-                  "children": null
                 }
               ]
             },
@@ -694,7 +539,7 @@
     {
       "id": "app0-stage1",
       "type": "appstack",
-      "name": "CC Analyzer Stage1",
+      "name": "Stage1 App Stack",
       "is_unknown": null,
       "additional_data": {
         "app_id": "app0-stage1",
@@ -725,7 +570,7 @@
         {
           "id": "app1-stage1",
           "type": "application",
-          "name": "Ruby On Rails",
+          "name": "Redis Server",
           "is_unknown": null,
           "additional_data": {
             "app_id": "app1-stage1",
@@ -890,7 +735,7 @@
     {
       "id": "app0-stage2",
       "type": "appstack",
-      "name": "CC Analyzer Stage2",
+      "name": "Stage2 App Stack",
       "is_unknown": null,
       "additional_data": {
         "app_id": "app0-stage2",
@@ -921,7 +766,7 @@
         {
           "id": "app1-stage2",
           "type": "application",
-          "name": "Ruby On Rails",
+          "name": "Redis Server",
           "is_unknown": null,
           "additional_data": {
             "app_id": "app1-stage2",
@@ -1061,7 +906,7 @@
     {
       "id": "app0-prod",
       "type": "appstack",
-      "name": "CC Analyzer Prod",
+      "name": "Prod App Stack",
       "is_unknown": null,
       "additional_data": {
         "app_id": "app0-prod",
@@ -1092,7 +937,7 @@
         {
           "id": "app1-prod",
           "type": "application",
-          "name": "Ruby On Rails",
+          "name": "Redis Server",
           "is_unknown": null,
           "additional_data": {
             "app_id": "app1-prod",
@@ -1232,7 +1077,7 @@
     {
       "id": "app0-prod2",
       "type": "appstack",
-      "name": "CC Analyzer Prod2",
+      "name": "Prod2 App Stack",
       "is_unknown": null,
       "additional_data": {
         "app_id": "app0-prod2",
@@ -1263,7 +1108,7 @@
         {
           "id": "app1-prod",
           "type": "application",
-          "name": "Ruby On Rails",
+          "name": "Redis Server",
           "is_unknown": null,
           "additional_data": {
             "app_id": "app1-prod2",
@@ -1403,7 +1248,7 @@
     {
       "id": "app0-prod3",
       "type": "appstack",
-      "name": "CC Analyzer Prod3",
+      "name": "Prod3 App Stack",
       "is_unknown": null,
       "additional_data": {
         "app_id": "app0-prod3",
@@ -1434,7 +1279,7 @@
         {
           "id": "app1-prod",
           "type": "application",
-          "name": "Ruby On Rails",
+          "name": "Redis Server",
           "is_unknown": null,
           "additional_data": {
             "app_id": "app1-prod3",
@@ -1574,7 +1419,7 @@
     {
       "id": "app0-prod4",
       "type": "appstack",
-      "name": "CC Analyzer Prod4",
+      "name": "Prod4 App Stack",
       "is_unknown": null,
       "additional_data": {
         "app_id": "app0-prod4",
@@ -1605,7 +1450,7 @@
         {
           "id": "app1-prod",
           "type": "application",
-          "name": "Ruby On Rails",
+          "name": "Redis Server",
           "is_unknown": null,
           "additional_data": {
             "app_id": "app1-prod4",
@@ -1745,7 +1590,7 @@
     {
       "id": "app0-prod5",
       "type": "appstack",
-      "name": "CC Analyzer Prod5",
+      "name": "Prod5 App Stack",
       "is_unknown": null,
       "additional_data": {
         "app_id": "app0-prod5",
@@ -1776,7 +1621,7 @@
         {
           "id": "app1-prod",
           "type": "application",
-          "name": "Ruby On Rails",
+          "name": "Redis Server",
           "is_unknown": null,
           "additional_data": {
             "app_id": "app1-prod4",
